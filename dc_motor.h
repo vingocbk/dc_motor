@@ -17,6 +17,14 @@
 
 TaskHandle_t TaskMotorHandle, TaskServerHandle;
 
+void IRAM_ATTR dirhallSensor1();
+void IRAM_ATTR dirhallSensor2();
+void IRAM_ATTR dirhallSensor3();
+void IRAM_ATTR dirhallSensor4();
+void IRAM_ATTR dirhallSensor5();
+void IRAM_ATTR dirhallSensor6();
 
+void setPinMode();
+void loadDataEeprom();
 
 #endif

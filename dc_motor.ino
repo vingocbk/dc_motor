@@ -8,6 +8,84 @@ static uint8_t taskCoreZero = 0;
 static uint8_t taskCoreOne  = 1;
 
 
+int cycle_distant[6];
+
+
+void motor1_stop(){
+	digitalWrite(L1_UP, LOW);
+	digitalWrite(L1_DOWN, LOW);
+}
+void motor2_stop(){
+	digitalWrite(L2_UP, LOW);
+	digitalWrite(L2_DOWN, LOW);
+}
+void motor3_stop(){
+	digitalWrite(L3_UP, LOW);
+	digitalWrite(L3_DOWN, LOW);
+}
+void motor4_stop(){
+	digitalWrite(L4_UP, LOW);
+	digitalWrite(L4_DOWN, LOW);
+}
+void motor5_stop(){
+	digitalWrite(L5_UP, LOW);
+	digitalWrite(L5_DOWN, LOW);
+}
+void motor6_stop(){
+	digitalWrite(L6_UP, LOW);
+	digitalWrite(L6_DOWN, LOW);
+}
+
+void motor1_open(){
+	digitalWrite(L1_UP, HIGH);
+	digitalWrite(L1_DOWN, LOW);
+}
+void motor2_open(){
+	digitalWrite(L2_UP, HIGH);
+	digitalWrite(L2_DOWN, LOW);
+}
+void motor3_open(){
+	digitalWrite(L3_UP, HIGH);
+	digitalWrite(L3_DOWN, LOW);
+}
+void motor4_open(){
+	digitalWrite(L4_UP, HIGH);
+	digitalWrite(L4_DOWN, LOW);
+}
+void motor5_open(){
+	digitalWrite(L5_UP, HIGH);
+	digitalWrite(L5_DOWN, LOW);
+}
+void motor6_open(){
+	digitalWrite(L6_UP, HIGH);
+	digitalWrite(L6_DOWN, LOW);
+}
+
+void motor1_close(){
+	digitalWrite(L1_UP, LOW);
+	digitalWrite(L1_DOWN, HIGH);
+}
+void motor2_close(){
+	digitalWrite(L2_UP, LOW);
+	digitalWrite(L2_DOWN, HIGH);
+}
+void motor3_close(){
+	digitalWrite(L3_UP, LOW);
+	digitalWrite(L3_DOWN, HIGH);
+}
+void motor4_close(){
+	digitalWrite(L4_UP, LOW);
+	digitalWrite(L4_DOWN, HIGH);
+}
+void motor5_close(){
+	digitalWrite(L5_UP, LOW);
+	digitalWrite(L5_DOWN, HIGH);
+}
+void motor6_close(){
+	digitalWrite(L6_UP, LOW);
+	digitalWrite(L6_DOWN, HIGH);
+}
+
 void IRAM_ATTR dirhallSensor1(){
 
 }
@@ -27,14 +105,7 @@ void IRAM_ATTR dirhallSensor6(){
     
 }
 
-
-
-void setup(){
-    // put your setup code here, to run once:
-    WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 0); //disable brownout detector
-	Serial.begin(BAUD_RATE_SERIAL);
-    EEPROM.begin(MAX_SIZE_EEPROM_BUFFER);
-
+void setPinMode(){
 	pinMode(L1_UP, OUTPUT);
 	pinMode(L1_DOWN, OUTPUT);
 	pinMode(L2_UP, OUTPUT);
@@ -58,13 +129,21 @@ void setup(){
 	pinMode(pinSetUp, INPUT);
 
 	delay(10);
+}
 
-	// motor1_stop();
-	// motor2_stop();
-	// motor3_stop();
-	// motor4_stop();
-	// motor5_stop();
-	// motor6_stop();
+void loadDataEeprom(){
+
+}
+
+void setup(){
+    // put your setup code here, to run once:
+    WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 0); //disable brownout detector
+	Serial.begin(BAUD_RATE_SERIAL);
+    EEPROM.begin(MAX_SIZE_EEPROM_BUFFER);
+
+	setPinMode();
+	loadDataEeprom();
+
 
 	attachInterrupt(digitalPinToInterrupt(hallSensor1a), dirhallSensor1, RISING);
 	attachInterrupt(digitalPinToInterrupt(hallSensor2a), dirhallSensor2, RISING);

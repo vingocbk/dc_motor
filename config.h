@@ -23,6 +23,13 @@
 #define pinSetUp                0
 
 
+#define EEPROOM_CYCLE_MOTOR_1   1
+#define EEPROOM_CYCLE_MOTOR_2   2
+#define EEPROOM_CYCLE_MOTOR_3   3
+#define EEPROOM_CYCLE_MOTOR_4   4
+#define EEPROOM_CYCLE_MOTOR_5   5
+#define EEPROOM_CYCLE_MOTOR_6   6
+
 
 #define BAUD_RATE_SERIAL		115200
 #define MAX_SIZE_EEPROM_BUFFER	256

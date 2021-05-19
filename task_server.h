@@ -2,6 +2,8 @@
 #define TASK_SERVER
 #include <Arduino.h>
 
+#define MAX_RESPONSE_LENGTH 512
+
 extern QueueHandle_t queueCommandServer;
 
 
