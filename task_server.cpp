@@ -3,8 +3,45 @@
 #include "AppDebug.h"
 #include "ArduinoJson.h"
 
-QueueHandle_t queueCommandServer;
+QueueHandle_t bleCommandQ;
 BluetoothSerial SerialBT;
+
+
+/******************************************
+*   ALL FUNCTION OF TASK
+*******************************************/
+void callbackBluetooth(esp_spp_cb_event_t event, esp_spp_cb_param_t *param);
+
+
+
+//--------Main Function--------------
+void task_server(void * parameter){
+
+    SerialBT.register_callback(callbackBluetooth);
+    if(!SerialBT.begin("ESP32")){
+        ECHOLN("An error occurred initializing Bluetooth");
+    }else{
+        ECHOLN("Bluetooth initialized");
+    }
+
+    ble_command_t bleCommadData;
+
+    while (1)
+    {
+        /* code */
+        /* Block until a BLE command has been received over bleCommandQ */
+        if(xQueueReceive(bleCommandQ, &bleCommadData,portMAX_DELAY) == pdTRUE){
+
+        }
+        ECHOLN("Test Block task BLE!");
+        vTaskDelay(100 / portTICK_PERIOD_MS);
+    }
+    
+}
+
+
+
+
 
 void callbackBluetooth(esp_spp_cb_event_t event, esp_spp_cb_param_t *param){
     if(event == ESP_SPP_SRV_OPEN_EVT){
@@ -22,21 +59,4 @@ void callbackBluetooth(esp_spp_cb_event_t event, esp_spp_cb_param_t *param){
             JsonObject& rootData = jsonBuffer.parseObject(data);
         }
     }
-}
-
-void task_server(void * parameter){
-
-    SerialBT.register_callback(callbackBluetooth);
-    if(!SerialBT.begin("ESP32")){
-        ECHOLN("An error occurred initializing Bluetooth");
-    }else{
-        ECHOLN("Bluetooth initialized");
-    }
-
-    while (1)
-    {
-        /* code */
-        vTaskDelay(100 / portTICK_PERIOD_MS);
-    }
-    
 }

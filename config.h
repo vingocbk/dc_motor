@@ -18,17 +18,25 @@
 #define hallSensor3a            32
 #define hallSensor4a            33
 #define hallSensor5a            34
-//#define hallSensor6a          35
-#define hallSensor6a            15
+#define hallSensor6a            35
+//#define hallSensor6a            15
 #define pinSetUp                0
+#define PIN_SWITCH_MODE_SETUP   15
 
 
-#define EEPROOM_CYCLE_MOTOR_1   1
-#define EEPROOM_CYCLE_MOTOR_2   2
-#define EEPROOM_CYCLE_MOTOR_3   3
-#define EEPROOM_CYCLE_MOTOR_4   4
-#define EEPROOM_CYCLE_MOTOR_5   5
-#define EEPROOM_CYCLE_MOTOR_6   6
+#define EEPROOM_CYCLE_MOTOR_1_START     1
+#define EEPROOM_CYCLE_MOTOR_1_END       10
+#define EEPROOM_CYCLE_MOTOR_2_START     11
+#define EEPROOM_CYCLE_MOTOR_2_END       20
+#define EEPROOM_CYCLE_MOTOR_3_START     21
+#define EEPROOM_CYCLE_MOTOR_3_END       30
+#define EEPROOM_CYCLE_MOTOR_4_START     31
+#define EEPROOM_CYCLE_MOTOR_4_END       40
+#define EEPROOM_CYCLE_MOTOR_5_START     41
+#define EEPROOM_CYCLE_MOTOR_5_END       50
+#define EEPROOM_CYCLE_MOTOR_6_START     51
+#define EEPROOM_CYCLE_MOTOR_6_END       60
+
 
 
 #define BAUD_RATE_SERIAL		115200
